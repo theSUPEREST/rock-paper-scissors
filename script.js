@@ -37,25 +37,22 @@ function playerChoice() { // create function
 function compareSelections(playerSelection, computerSelection) { // compares selections to see result of the round
     switch(true) {
         case (playerSelection === computerSelection): // if both same, Draw
-            alert("Draw!");
-            break;
+            return "draw";
         case (playerSelection === "rock"):
-            (computerSelection === "scissors") ? alert("Win!") : alert("Lose!");
-            break;
+            if (computerSelection === "scissors") { return "win" } else { return "lose" } ;
         case (playerSelection === "paper"):
-            (computerSelection === "rock") ? alert("Win!") : alert("Lose!");
-            break;
+            if (computerSelection === "rock") {return "win"}  else {return "lose"} ;
         case (playerSelection === "scissors"):
-        (computerSelection === "paper") ? alert("Win!") : alert("Lose!");
-        break;
+            if (computerSelection === "paper") {return "win"}  else {return "lose"} ;
     }
 }
 
 function playOneRound () {
     playerChoice();
+    console.log("You chose " + playerSelection)
     computerPlay();
     console.log("CPU chose " + computerSelection);
-    compareSelections(playerSelection, computerSelection);
+    console.log(compareSelections(playerSelection, computerSelection));
 }
 
 // create function which runs computer choice and player choice and stores both values
