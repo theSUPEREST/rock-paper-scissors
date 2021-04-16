@@ -5,23 +5,25 @@
 let computerSelection;   
 let playerSelection
     //function to randomly choose one of three selections
+
+function createRandomNumber() {
+    return Math.floor(Math.random() * 3); //cpu chose int between 0 and 2.
+} 
 function computerPlay() {
-    let randomNumber = Math.floor(Math.random() * 3); //cpu chose int between 0 and 2. 
+    let randomNumber = createRandomNumber(); //run random number generator (1-3) and store as variable
     if (randomNumber === 0) {  //store random selection as cpu selection variable
-        computerSelection = "rock" //0 = rock, 1 = paper, 2 = scissors
+        computerSelection = "rock"  //0 = rock 
     } else if (randomNumber === 1) {
-        computerSelection = "paper"
-    } else { computerSelection = "scissors" };
-    console.log(computerSelection); //Testing function
+        computerSelection = "paper"  //1 = paper
+    } else { computerSelection = "scissors" };  //2 = scissors
+    return computerSelection; //Testing function
 };
 
 function playerChoice() { // create function
     playerSelection = prompt("rock paper scissors"); // Give user the choice to input rock, paper, or scissors
-
     if (playerSelection !== null) { // if user does not cancel...
         playerSelection = playerSelection.toLowerCase(); // convert string to lowercase
         if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors" ) { // check if response is valid (rock, paper or scissors)
-            console.log(playerSelection); // testing
         } else {
             alert("Invalid"); // if input is not rock, paper or scissors, show invalid message and
             playerChoice();  // rerun the function
@@ -29,11 +31,38 @@ function playerChoice() { // create function
     } else {
         alert("Okay, maybe another time"); // if user does cancel, show message. 
     }
+    return playerSelection; //
 } 
 
+function compareSelections(playerSelection, computerSelection) { // compares selections to see result of the round
+    switch(true) {
+        case (playerSelection === computerSelection): // if both same, Draw
+            alert("Draw!");
+            break;
+        case (playerSelection === "rock"):
+            (computerSelection === "scissors") ? alert("Win!") : alert("Lose!");
+            break;
+        case (playerSelection === "paper"):
+            (computerSelection === "rock") ? alert("Win!") : alert("Lose!");
+            break;
+        case (playerSelection === "scissors"):
+        (computerSelection === "paper") ? alert("Win!") : alert("Lose!");
+        break;
+    }
+}
 
-//   User inputs rock, paper, or scissors
+function playOneRound () {
+    playerChoice();
+    computerPlay();
+    console.log("CPU chose " + computerSelection);
+    compareSelections(playerSelection, computerSelection);
+}
 
+// create function which runs computer choice and player choice and stores both values
+
+
+
+// create function which takes computerSelection and playerSelection and
 /* Compare the choices to see who won
     if both choices are the same, its a draw
     otherwise if user chose rock
