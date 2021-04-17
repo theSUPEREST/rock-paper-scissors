@@ -47,35 +47,57 @@ function compareSelections(playerSelection, computerSelection) { // compares sel
     }
 }
 
-function playOneRound () {
-    playerChoice();
-    console.log("You chose " + playerSelection)
-    computerPlay();
-    console.log("CPU chose " + computerSelection);
-    console.log(compareSelections(playerSelection, computerSelection));
+function playOneRound () { 
+    playerChoice(); // player chooses
+    console.log("You chose " + playerSelection) // logs player choice
+    computerPlay(); // cpu chooses randomly
+    console.log("CPU chose " + computerSelection); // logs cpu choice
+    let matchResult = compareSelections(playerSelection, computerSelection); // compares choices to see who won
+    return matchResult // return result (win/lose/draw)
 }
 
-// create function which runs computer choice and player choice and stores both values
 
 
+function game() {
+    
+    let playerPoints = 0;   //Create variable to track user wins, starting at 0
+    let computerPoints = 0;   //Create variable to track cpu wins, starting at 0
+    let matchResult = playOneRound() ;  // create a function that plays one round and reports whether win/lose/draw
+    function incrementWinnersPoints() {  // function to increment winners points by 1 (no points if draw)
+        if (matchResult === "win") {  
+            console.log(matchResult);
+            ++playerPoints;
+        } else if (matchResult === "lose") {
+            console.log(matchResult);
+            ++computerPoints;
+        } else {
+            console.log(matchResult);
+        }
+    }
+    incrementWinnersPoints();
+    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
 
-// create function which takes computerSelection and playerSelection and
-/* Compare the choices to see who won
-    if both choices are the same, its a draw
-    otherwise if user chose rock
-        if cpu chose paper, cpu win
-        if cpu chose scissors, user win
-    otherwise if user chose paper then
-        if cpu chose scissors, cpu win
-        if cpu chose rock, user win
-    otherwise if user chose scissors
-        if cpu chose rock, cpu win
-        if cpu chose paper, user win
-Tell the user who won (or draw)
-If user won, give user 1 point
-if cpu won, give cpu 1 point
-(if draw, no points)
-repeat for 5 games, keeping track of points
-at the end of 5 games, whoever has the most points is the winner winner
-tell user who the true winner is
-*/
+    matchResult = playOneRound() ;
+    incrementWinnersPoints();
+    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
+
+    matchResult = playOneRound() ;
+    incrementWinnersPoints();
+    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
+
+    matchResult = playOneRound() ;
+    incrementWinnersPoints();
+    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
+
+    matchResult = playOneRound() ;
+    incrementWinnersPoints();
+    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
+
+    if (playerPoints > computerPoints) { //after 5 games, compare amount of user wins to cpu wins to see who wins the set
+        console.log("Ultimate victory");  //tell user who the true winner is
+    } else if (playerPoints < computerPoints) {
+        console.log("Crushing defeat")
+    } else {
+        console.log("Evenly matched");
+    }
+} 
