@@ -52,10 +52,13 @@ function compareSelections(playerSelection, computerSelection) {
 
 function playOneRound (e) { 
     playerSelection = e.target.id;
+    document.querySelector('div.player-card').textContent = playerSelection;
     console.log("You chose " + playerSelection);
     computerPlay(); 
+    document.querySelector('div.cpu-card').textContent = computerSelection;
     console.log("CPU chose " + computerSelection); 
     let matchResult = compareSelections(playerSelection, computerSelection); 
+    document.querySelector('div.message').textContent = matchResult;
     console.log(matchResult);
 }
 
