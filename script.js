@@ -1,7 +1,7 @@
 
 
 let computerSelection;   
-let playerSelection
+let playerSelection;
 
 function createRandomNumber() {
     return Math.floor(Math.random() * 3);
@@ -31,9 +31,15 @@ function playerChoice() {
     return playerSelection;
 } 
 
-function compareSelections(playerSelection, computerSelection) { // compares selections to see result of the round
+let buttons = document.querySelectorAll('.button');
+
+buttons.forEach(item => {
+    item.addEventListener('click', playOneRound)
+})
+
+function compareSelections(playerSelection, computerSelection) { 
     switch(true) {
-        case (playerSelection === computerSelection): // if both same, Draw
+        case (playerSelection === computerSelection): 
             return "draw";
         case (playerSelection === "rock"):
             if (computerSelection === "scissors") { return "win" } else { return "lose" } ;
@@ -44,23 +50,23 @@ function compareSelections(playerSelection, computerSelection) { // compares sel
     }
 }
 
-function playOneRound () { 
-    playerChoice(); // player chooses
-    console.log("You chose " + playerSelection) // logs player choice
-    computerPlay(); // cpu chooses randomly
-    console.log("CPU chose " + computerSelection); // logs cpu choice
-    let matchResult = compareSelections(playerSelection, computerSelection); // compares choices to see who won
-    return matchResult // return result (win/lose/draw)
+function playOneRound (e) { 
+    playerSelection = e.target.id;
+    console.log("You chose " + playerSelection);
+    computerPlay(); 
+    console.log("CPU chose " + computerSelection); 
+    let matchResult = compareSelections(playerSelection, computerSelection); 
+    console.log(matchResult);
 }
 
 
 
 function game() {
     
-    let playerPoints = 0;   //Create variable to track user wins, starting at 0
-    let computerPoints = 0;   //Create variable to track cpu wins, starting at 0
-    let matchResult = playOneRound() ;  // create a function that plays one round and reports whether win/lose/draw
-    function incrementWinnersPoints() {  // function to increment winners points by 1 (no points if draw)
+    let playerPoints = 0;   
+    let computerPoints = 0;   
+    let matchResult = playOneRound() ;  
+    function incrementWinnersPoints() {  
         if (matchResult === "win") {  
             console.log(matchResult);
             ++playerPoints;
@@ -90,8 +96,8 @@ function game() {
     incrementWinnersPoints();
     console.log("Player: " + playerPoints + " CPU: " + computerPoints);
 
-    if (playerPoints > computerPoints) { //after 5 games, compare amount of user wins to cpu wins to see who wins the set
-        console.log("Ultimate victory");  //tell user who the true winner is
+    if (playerPoints > computerPoints) { 
+        console.log("Ultimate victory");  
     } else if (playerPoints < computerPoints) {
         console.log("Crushing defeat")
     } else {
