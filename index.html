@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8"/>
-        <script src="/script.js"></script>
-    </head>
-    <body>
-        
-    </body>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <div class="game-container flex-parent-column">
+        <div class="card-area flex-parent-column ">
+            <div class="cpu-card flex-parent-column flex-item-grow">?</div>
+            <div class="player-card flex-parent-column flex-item-grow">?</div>
+        </div>
+        <div class="player-area flex-item-grow">
+            <div class="choices flex-parent-row">
+                <button class="button" id="rock">ROCK</button>
+                <button class="button" id="paper">PAPER</button>
+                <button class="button" id="scissors">SCISSORS</button>
+            </div>
+            <div class="message">CHOOSE</div>
+        </div>
+        <div class="score-area flex-item-grow flex-parent-row">
+            <div class="player-score">
+                <div class="player-score-display"></div>
+                <p>YOU</p>
+            </div>
+            <div class="cpu-score">
+                <div class="cpu-score-display"></div>
+                <p>CPU</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/script.js"></script>
+</body>
 </html>

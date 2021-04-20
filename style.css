@@ -1,0 +1,75 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+html, body, .game-container {
+    height: 100%;
+}
+html {
+    background-color: #132c33;
+}
+.flex-parent-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-parent-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item-grow {
+    flex: 1 0 auto;
+}
+
+.card-area {
+    flex: 2 0 auto;
+}
+
+.cpu-card, .player-card {
+    background-color: #126e82;
+    width: 12.5rem;
+    margin: 1.25rem;
+    color: white;
+}
+
+.button {
+    height: 50px;
+    width: 150px;
+    margin: 25px;
+    padding: 15px;
+    font-size: 24px;
+    line-height: 0px;
+}
+
+.player-score, .cpu-score {
+    
+}
+
+
