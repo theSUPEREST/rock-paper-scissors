@@ -59,6 +59,11 @@ html {
     color: white;
 }
 
+.player-area {
+    background-color: #0c1d22;
+    width: 100%;
+}
+
 .button {
     height: 50px;
     width: 150px;
@@ -66,10 +71,31 @@ html {
     padding: 15px;
     font-size: 24px;
     line-height: 0px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid white;
+}
+
+.button:hover {
+    background-color: #126e82;
+    transform: scale(1.1);
 }
 
 .player-score, .cpu-score {
+    margin: 0 100px;   
+}
+
+.cpu-score-display, .player-score-display {
+    margin: 15px;
     
 }
 
+.message {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+}
 
+.score-area {
+    color: white;
+}

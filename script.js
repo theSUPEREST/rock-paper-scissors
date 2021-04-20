@@ -1,37 +1,34 @@
 
 
-//CPU randomly chooses rock paper or scissors
-    //create variables to store cpu selection and player selection
 let computerSelection;   
 let playerSelection
-    //function to randomly choose one of three selections
 
 function createRandomNumber() {
-    return Math.floor(Math.random() * 3); //cpu chose int between 0 and 2.
+    return Math.floor(Math.random() * 3);
 } 
 function computerPlay() {
-    let randomNumber = createRandomNumber(); //run random number generator (1-3) and store as variable
-    if (randomNumber === 0) {  //store random selection as cpu selection variable
-        computerSelection = "rock"  //0 = rock 
+    let randomNumber = createRandomNumber();
+    if (randomNumber === 0) {
+        computerSelection = "rock"
     } else if (randomNumber === 1) {
-        computerSelection = "paper"  //1 = paper
-    } else { computerSelection = "scissors" };  //2 = scissors
-    return computerSelection; //Testing function
+        computerSelection = "paper"
+    } else { computerSelection = "scissors" };
+    return computerSelection;
 };
 
-function playerChoice() { // create function
-    playerSelection = prompt("rock paper scissors"); // Give user the choice to input rock, paper, or scissors
-    if (playerSelection !== null) { // if user does not cancel...
-        playerSelection = playerSelection.toLowerCase(); // convert string to lowercase
-        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors" ) { // check if response is valid (rock, paper or scissors)
+function playerChoice() {
+    playerSelection = prompt("rock paper scissors");
+    if (playerSelection !== null) {
+        playerSelection = playerSelection.toLowerCase();
+        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors" ) {
         } else {
-            alert("Invalid"); // if input is not rock, paper or scissors, show invalid message and
-            playerChoice();  // rerun the function
+            alert("Invalid");
+            playerChoice();
         }
     } else {
-        alert("Okay, maybe another time"); // if user does cancel, show message. 
+        alert("Okay, maybe another time");
     }
-    return playerSelection; //
+    return playerSelection;
 } 
 
 function compareSelections(playerSelection, computerSelection) { // compares selections to see result of the round
