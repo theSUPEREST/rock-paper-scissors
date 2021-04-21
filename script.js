@@ -16,21 +16,6 @@ function computerPlay() {
     return computerSelection;
 };
 
-function playerChoice() {
-    playerSelection = prompt("rock paper scissors");
-    if (playerSelection !== null) {
-        playerSelection = playerSelection.toLowerCase();
-        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors" ) {
-        } else {
-            alert("Invalid");
-            playerChoice();
-        }
-    } else {
-        alert("Okay, maybe another time");
-    }
-    return playerSelection;
-} 
-
 let buttons = document.querySelectorAll('.button');
 
 buttons.forEach(item => {
@@ -50,6 +35,27 @@ function compareSelections(playerSelection, computerSelection) {
     }
 }
 
+let playerPoints = 0;   
+let computerPoints = 0; 
+let matchResult;
+function incrementPoints() {  
+    if (matchResult === "win") {  
+        console.log(matchResult);
+        ++playerPoints;
+    } else if (matchResult === "lose") {
+        console.log(matchResult);
+        ++computerPoints;
+    } else {
+        console.log(matchResult);
+    }
+}
+
+function resetPoints() {
+    playerPoints = 0;
+    computerPoints = 0;
+    console.log("reset");
+}
+
 function playOneRound (e) { 
     playerSelection = e.target.id;
     document.querySelector('div.player-card').textContent = playerSelection;
@@ -57,53 +63,19 @@ function playOneRound (e) {
     computerPlay(); 
     document.querySelector('div.cpu-card').textContent = computerSelection;
     console.log("CPU chose " + computerSelection); 
-    let matchResult = compareSelections(playerSelection, computerSelection); 
+    matchResult = compareSelections(playerSelection, computerSelection); 
     document.querySelector('div.message').textContent = matchResult;
     console.log(matchResult);
+    incrementPoints();
+    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
+    document.querySelector('.player-score-display > p').textContent = playerPoints;
+    document.querySelector('.cpu-score-display > p').textContent = computerPoints;
+    if ( playerPoints >= 5 ) { 
+        alert("Player Win")
+        resetPoints();
+    }
+    if ( computerPoints >= 5 ) { 
+        alert("CPU Win")
+        resetPoints();
+    }
 }
-
-
-
-function game() {
-    
-    let playerPoints = 0;   
-    let computerPoints = 0;   
-    let matchResult = playOneRound() ;  
-    function incrementWinnersPoints() {  
-        if (matchResult === "win") {  
-            console.log(matchResult);
-            ++playerPoints;
-        } else if (matchResult === "lose") {
-            console.log(matchResult);
-            ++computerPoints;
-        } else {
-            console.log(matchResult);
-        }
-    }
-    incrementWinnersPoints();
-    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
-
-    matchResult = playOneRound() ;
-    incrementWinnersPoints();
-    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
-
-    matchResult = playOneRound() ;
-    incrementWinnersPoints();
-    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
-
-    matchResult = playOneRound() ;
-    incrementWinnersPoints();
-    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
-
-    matchResult = playOneRound() ;
-    incrementWinnersPoints();
-    console.log("Player: " + playerPoints + " CPU: " + computerPoints);
-
-    if (playerPoints > computerPoints) { 
-        console.log("Ultimate victory");  
-    } else if (playerPoints < computerPoints) {
-        console.log("Crushing defeat")
-    } else {
-        console.log("Evenly matched");
-    }
-} 
