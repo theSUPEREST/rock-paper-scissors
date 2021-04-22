@@ -56,12 +56,52 @@ function resetPoints() {
     console.log("reset");
 }
 
+function testAnimation (e) {
+    let playerImg = document.querySelector(`.player-card > .${e.target.id}-img`)
+    playerImg.classList.add("visible");    
+}
+
+function hidePlayerImgs() {
+    let cardImgs = document.querySelectorAll('.player-card > .card-img');
+    cardImgs.forEach(item => item.classList.remove("visible"));
+}
+
+function flipCardTest(e) {
+    let playerCard = document.querySelector('.player-card.card');
+    if (playerCard.classList.contains('flipped')) { 
+        playerCard.classList.remove('flipped');
+        playerCard.addEventListener('transitionend', () => {
+            hidePlayerImgs()
+            testAnimation(e);
+            playerCard.classList.add('flipped');
+        }) 
+    } else {
+        testAnimation(e);
+        playerCard.classList.add('flipped');
+    }
+
+}
+
+
+function flipCard () {
+     
+        playerCard.classList.remove('flipped');
+        playerCard.ontransitionend = () => {
+            let cardImgs = document.querySelectorAll('.player-card > .card-img');
+            cardImgs.forEach(item => item.classList.remove("visible"));
+            testAnimation
+            playerCard.classList.add('flipped');
+        }
+    
+    console.log(playerCard);
+}
+
 function playOneRound (e) { 
     playerSelection = e.target.id;
-    document.querySelector('div.player-card').textContent = playerSelection;
+    flipCardTest(e);
     console.log("You chose " + playerSelection);
     computerPlay(); 
-    document.querySelector('div.cpu-card').textContent = computerSelection;
+    document.querySelector('div.cpu-card.card-front').textContent = computerSelection;
     console.log("CPU chose " + computerSelection); 
     matchResult = compareSelections(playerSelection, computerSelection); 
     document.querySelector('div.message').textContent = matchResult;

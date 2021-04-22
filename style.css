@@ -52,11 +52,48 @@ html {
     flex: 2 0 auto;
 }
 
-.cpu-card, .player-card {
-    background-color: #126e82;
-    width: 12.5rem;
+
+
+.flip-container {
+    height: 200px;
+    width: 200px;
     margin: 1.25rem;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.card {
+    position: relative;
+    transition: transform .25s;
+    height: 12.5rem;
+    width: 12.5rem;
+    transform-style: preserve-3d;    
+}
+
+.card-front, .card-back {
+    background-color: #126e82;
     color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
 }
 
 .player-area {
