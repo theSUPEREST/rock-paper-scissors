@@ -66,7 +66,7 @@ html {
 
 .card {
     position: relative;
-    transition: transform .25s;
+    transition: transform .15s;
     height: 12.5rem;
     width: 12.5rem;
     transform-style: preserve-3d;    
